@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# ReatherApp - Aplicativo de Clima/Tempo em React ☀️🌧️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Visão Geral
 
-## Available Scripts
+Bem-vindo ao WeatherApp, um aplicativo em React que fornece informações precisas sobre o clima/tempo em tempo real. Este projeto utiliza a poderosa biblioteca React para criar uma interface intuitiva e responsiva, permitindo que os usuários obtenham facilmente as condições meteorológicas atuais.
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+- **Consulta de Clima/Tempo:** Obtenha informações detalhadas sobre as condições meteorológicas de qualquer localidade.
+- **Previsão de 5 Dias:** Planeje seu tempo com uma previsão do clima para os próximos 5 dias.
+- **Pesquisa por Localidade:** Busque por cidade ou utilize a geolocalização para obter dados precisos da sua localização atual.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pré-requisitos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/) (v14.0.0 ou superior)
+- [React](https://reactjs.org/) (v17.0.0 ou superior)
+- Acesso a uma API de Clima/Tempo (por exemplo, OpenWeatherMap)
 
-### `npm test`
+## Instalação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone o repositório: `git clone https://github.com/seu-usuario/react-weather-app.git`
+2. Navegue até o diretório do projeto: `cd react-weather-app`
+3. Instale as dependências: `npm install`
 
-### `npm run build`
+## Uso
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Inicie o aplicativo: `npm start`
+2. Abra o navegador e acesse `http://localhost:3000/`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contribuição
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Sinta-se à vontade para contribuir para o projeto. Para contribuir, siga estes passos:
 
-### `npm run eject`
+1. Fork o repositório
+2. Crie uma nova branch: `git checkout -b feature/nova-funcionalidade`
+3. Faça as alterações e faça o commit: `git commit -m 'Adiciona nova funcionalidade'`
+4. Envie as alterações para o repositório: `git push origin feature/nova-funcionalidade`
+5. Abra um Pull Request descrevendo suas alterações.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Licença
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Esperamos que aproveite o ReatherApp! Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Esteja sempre preparado para qualquer clima com o ReatherApp!**  🌦️
