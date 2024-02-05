@@ -6,22 +6,21 @@ import { Icon } from '@iconify/react'
 
 import api from '../../services/api'
 
-import { purple } from '@mui/material/colors'
-
 import IconProvider from '../../components/IconProvider'
 
 //---------------------------------------------
 
-export default function Lobby(){
+export default function Widget(){
+    const [icon, setIcon] = useState('') //Icone
+
     const [imagePath, setImagePath] = useState('') //Imagem de fundo
 
-    const [location, setLocation] = useState('Itu')
+    const [location, setLocation] = useState('Campinas') //Icone
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]) // Informações
 
     useEffect(()=> {
         getWeather()
-        getImagePath('rain')
     }, [location])
 
     function getWeather(){
@@ -32,19 +31,59 @@ export default function Lobby(){
                     'location': response.data.location.name,
                     'condition': response.data.current.condition.text,
                     'temp': response.data.current.temp_c,
-                    'data': new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                    'date': `${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - ${new Date().toLocaleString('en', { weekday: 'long', month: 'short', day: '2-digit' })}`
                 }
+                const imgPath = getImagesPath(current_data.condition.toLowerCase(), response.data.current.is_day)
+                setImagePath(imgPath)
+                const icon = getIcon(current_data.condition.toLowerCase(), response.data.current.is_day)
+                setIcon(icon)
                 setData(current_data)
             }
         )
     }
 
-    function getImagePath(props){
-        if(props.includes('rain')){
-            setImagePath('https://images.unsplash.com/photo-1433863448220-78aaa064ff47?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
-        }else{
-            setImagePath('https://images.unsplash.com/flagged/photo-1552425083-0117136f7d67?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+    function getImagesPath(props, is_day){
+        if(props.includes('cloudy')){
+            return 'https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         }
+        if(props.includes('rain')){
+            return 'https://images.unsplash.com/photo-1603321544554-f416a9a11fcf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        }
+        if(props.includes('overcast')){
+            return 'https://images.unsplash.com/photo-1499956827185-0d63ee78a910?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        }
+        if(props.includes('fog')){
+            return 'https://images.unsplash.com/photo-1486184885347-1464b5f10296?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        }
+        if(props.includes('clear')){
+            if(is_day){
+                return 'https://images.unsplash.com/12/sun-trees.jpg?q=80&w=1940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            }
+            return 'https://images.unsplash.com/photo-1534862559316-6579e3b7872a?q=80&w=1941&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        }
+        return 'https://images.unsplash.com/photo-1470700734224-041a091bdf74?q=80&w=1997&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+
+    function getIcon(props, is_day){
+        if(props.includes('cloudy') || props.includes('overcast')){
+            return 'mingcute:cloud-line'
+        }
+        if(props.includes('rain')){
+            if(props.includes('heavy') || props.includes('patchy')){
+                return 'mingcute:cloud-lightning-line'
+            }
+            return 'mingcute:showers-line'
+        }
+        if(props.includes('fog')){
+            return 'mingcute:floating-dust-line'
+        }
+        if(props.includes('clear')){
+            if(is_day){
+                return 'mingcute:sun-line'
+            }
+            return 'mingcute:moon-stars-fill'
+        }
+        return 'mingcute:sun-line'
     }
 
     const handleInputLocation = (event) => {
@@ -58,7 +97,7 @@ export default function Lobby(){
             sx={{
                 height: '100vh',
                 width: '100vw',
-                background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${imagePath})`,
+                background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(${imagePath})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -83,13 +122,16 @@ export default function Lobby(){
                     justifyContent="space-between"
                     alignItems="flex-start"
                     xs={12}
-                    md={7}
+                    md={8}
                     padding={3}
                     sx={{
                         background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${imagePath})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
                         borderRadius: '3px',
                         boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
-                        height: '60vh'
+                        height: '70vh'
                     }}
                 >
                     <Grid 
@@ -100,10 +142,12 @@ export default function Lobby(){
                         alignItems="center"
                     >
                         <Grid item>
-                            <h3>Weather App </h3>
+                            <h3><Icon icon='devicon:react' width="24"/> Weather App </h3>
                         </Grid>
                         <Grid item>
                             <TextField
+                                variant="filled"
+                                placeholder='Pesquisar localização...'
                                 onKeyUp={handleInputLocation}
                                 InputProps={{
                                     startAdornment: 
@@ -126,14 +170,14 @@ export default function Lobby(){
                         </Grid>
                         <Grid item>
                             <h2>{data.location}</h2>
-                            <p>{data.data}</p>
+                            <p>{data.date}</p>
                         </Grid>
                         <Grid 
                             item
                             marginLeft={3}
                             sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
                         >
-                            <IconProvider icon='mingcute:heavy-rain-line' width={72}/>
+                            <IconProvider icon={icon} width={72}/>
                             <p>{data.condition}</p>
                         </Grid>
                     </Grid>

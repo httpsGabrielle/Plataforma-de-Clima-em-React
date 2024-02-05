@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Lobby from './pages/lobby';
-import './global.css'
+import Widget from './pages/widget';
+import './styles/global.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Lobby/>
+    <Widget/>
   </React.StrictMode>
 );
