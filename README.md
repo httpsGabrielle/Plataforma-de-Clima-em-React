@@ -4,6 +4,9 @@
 
 Bem-vindo ao WeatherApp, um aplicativo em React que fornece informações precisas sobre o clima/tempo em tempo real. Este projeto utiliza a poderosa biblioteca React para criar uma interface intuitiva e responsiva, permitindo que os usuários obtenham facilmente as condições meteorológicas atuais.
 
+![Preview do projeto](./src/assets/preview.gif)
+
+
 ## Funcionalidades
 
 - **Consulta de Clima/Tempo:** Obtenha informações detalhadas sobre as condições meteorológicas de qualquer localidade.
